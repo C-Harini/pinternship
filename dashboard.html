@@ -252,6 +252,44 @@
     font-weight: 700;
     color: #6b7280;
   }
+
+  .top-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px 0 20px;
+}
+
+/* Back button */
+.back-btn {
+  background: #e8eaf6;
+  color: #1a237e;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.back-btn:hover {
+  background: #dfe2fd;
+}
+
+/* Tabs stay centered */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex: 1;               /* THIS IS THE KEY */
+  flex-wrap: wrap;
+}
+
+/* Right spacer (keeps tabs centered) */
+.top-bar-spacer {
+  width: 80px;           /* same visual weight as back button */
+}
+
 </style>
 </head>
 
@@ -263,18 +301,19 @@
 </div>
 
 <!-- Top Tabs -->
-<div class="tabs">
-  <div class="tab active" data-tab="leaderboard">Leaderboard</div>
-  <div class="tab" data-tab="cs">CS Progress</div>
-  <div class="tab" data-tab="health">Health Points</div>
-  <div class="tab" data-tab="tickets">Tickets</div>
+<div class="top-bar">
+  <button class="back-btn" onclick="history.back()">← Back</button>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="leaderboard">Leaderboard</div>
+    <div class="tab" data-tab="cs">CS Progress</div>
+    <div class="tab" data-tab="health">Health Points</div>
+    <div class="tab" data-tab="tickets">Tickets</div>
+  </div>
+
+  <div class="top-bar-spacer"></div>
 </div>
-  <!-- Back Button -->
-  <a href="https://sudarshansudarshan.github.io/pinternship/"
-     class="back-btn">
-     ← Back
-  </a>
-</div>
+
 
 
 <!-- Leaderboard Tab -->
@@ -309,17 +348,45 @@
   </div>
 </div>
 
-<!-- CS Progress Tab (placeholder) -->
+<!-- CS Progress Tab -->
 <div class="tab-content" id="tab-cs">
   <div class="dashboard-inner">
     <div class="dashboard-view" style="width:100%;">
-      <div class="placeholder">
-        <h2 style="color:#1a237e;">CS Progress</h2>
-        <p class="soon">Will be added soon</p>
+
+      <div class="status-row">
+        <div class="pill">CS PROGRESS</div>
+
+        <div class="search">
+          <input id="cs-search" placeholder="Search by name or email…" />
+        </div>
       </div>
+
+      <div style="margin-bottom:14px;">
+        <a href="https://forms.gle/9brRWW5kAbv2kaH98" target="_blank"
+           style="
+             display:inline-block;
+             padding:10px 16px;
+             background:#1a237e;
+             color:white;
+             border-radius:8px;
+             font-weight:600;
+             text-decoration:none;
+           ">
+          Submit your Case Studies here
+        </a>
+      </div>
+
+      <div class="table-wrap">
+        <table id="cs-table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
     </div>
   </div>
 </div>
+
 
 <!-- Health Points Tab (placeholder) -->
 <div class="tab-content" id="tab-health">
